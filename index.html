@@ -1,23 +1,501 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+  <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "초소형 전기차 트위지 보험료 비교견적 서비스",
+          "provider": {
+            "@type": "Organization",
+            "name": "트위지보험료 비교 분석 전문 센터",
+            "url": "https://yourdomain.com",
+            "logo": "https://yourdomain.com/logo.png"
+          },
+          "areaServed": "대한민국",
+          "description": "르노 트위지 차량 운전자를 위한 맞춤형 초소형 전기차 보험료 최저가 비교 분석 및 전문 통계 제공.",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "트위지 자동차보험 상품군",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Product",
+                  "name": "트위지 다이렉트 자동차보험 표준형"
+                },
+                "description": "가장 기본적인 초소형 전기차 전용 책임 및 종합 보험 상품입니다."
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Product",
+                  "name": "트위지 맞춤형 자차 특화 보험"
+                },
+                "description": "트위지 외장재 특성을 고려한 단독사고 보장 강화 상품입니다."
+              }
+            ]
+          }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #1e3a8a; 
+            --secondary-color: #0284c7; 
+            --accent-color: #0f766e;
+            --background-color: #f8fafc; 
+            --card-background: #ffffff;
+            --text-color: #334155;
+            --light-border: #e2e8f0;
+            --highlight-bg: #f1f5f9;
+        }
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8; 
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-weight: 300; 
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        nav a:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--card-background);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+        }
+        section {
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--light-border);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.6rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+        h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 12px;
+            font-weight: 700;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 2.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--light-border);
+        }
+        th, td {
+            padding: 1.2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--light-border);
+            border-right: 1px solid var(--light-border);
+            font-size: 0.95rem;
+        }
+        th:last-child, td:last-child {
+             border-right: none;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 700;
+        }
+        tr:nth-child(even) {
+            background-color: var(--highlight-bg);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color); 
+            color: white;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 2.5rem 0;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
+        }
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        .keyword-tags {
+            margin: 2.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 1.5rem;
+            background-color: var(--highlight-bg);
+            border-radius: 10px;
+        }
+        .keyword-tags span {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            border: 1px solid var(--light-border);
+        }
+        .input-group {
+            background-color: #f0fdf4; 
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+        }
+        .input-group-secondary {
+            background-color: #f0f9ff;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border-radius: 12px;
+            border: 1px solid #bae6fd;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        .input-group-secondary label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1rem;
+        }
+        .input-group input[type="text"],
+        .input-group input[type="number"],
+        .input-group select,
+        .input-group textarea,
+        .input-group-secondary input[type="text"],
+        .input-group-secondary input[type="number"],
+        .input-group-secondary select,
+        .input-group-secondary textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.2rem;
+            border: 1px solid var(--light-border);
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            background-color: white;
+            font-size: 0.95rem;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group-secondary input:focus,
+        .input-group-secondary select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+        .form-submit {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            width: 100%;
+        }
+        .form-submit:hover {
+            background-color: var(--accent-color);
+        }
+        .external-link {
+            color: var(--secondary-color); 
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .external-link:hover {
+            text-decoration: underline;
+            color: var(--primary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            background-color: var(--highlight-bg);
+            margin-top: 3rem;
+            border-top: 1px solid var(--light-border);
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>트위지보험료 비교견적 가이드 초소형 전기차 전용 분석</h1>
+        <nav aria-label="메인 네비게이션">
+            <ul>
+                <li><a href="#개요">트위지보험 개요</a></li>
+                <li><a href="#비용분석">연령대별 비용 분석</a></li>
+                <li><a href="#가입요령">다이렉트 가입 요령</a></li>
+                <li><a href="#커뮤니티">내돈내산 실제 후기</a></li>
+                <li><a href="#계산기">실시간 모의 계산기</a></li>
+                <li><a href="#신뢰사이트">외부 참고 자료</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section id="개요">
+            <h2>초소형 전기차 트위지보험 왜 전문적인 비교와 분석이 필요할까요</h2>
+            <p>초소형 전기차 시장의 독보적인 아이콘인 르노 트위지 차량은 독특한 규격과 외관을 지니고 있어 일반 승용차와는 다른 특화된 기준을 적용받습니다. 트위지보험 상품을 선택할 때 소비자들이 가장 먼저 직면하는 질문은 내 차의 연간 트위지보험료 평균 금액은 얼마이며 어느 보험사가 가장 저렴한곳인가 하는 점입니다. 트위지는 환경부 보조금과 지자체 지원금 혜택을 받아 구매 비용 부담을 낮출 수 있는 장점이 있지만 반대로 에어백 미장착 모델이 존재하거나 고속도로 진입이 금지되는 등 안전과 운행 환경 측면의 단점도 뚜렷하여 보험 요율 책정이 까다로운 편입니다.</p>
+            <p>손해율 산출 체계가 일반 세단이나 경차와 구별되기 때문에 단순히 대형 브랜드 위주로 가입을 결정하기보다는 다양한 온라인 비교 사이트와 앱 어플리케이션을 적극적으로 활용하여 각 업체별 예상 가격을 객관적으로 비교해 보아야 합니다. 특히 2026년도 기준에 맞춘 새로운 보장 범위와 특약 혜택을 꼼꼼히 검토함으로써 신규 가입자뿐만 아니라 기존 운전자들의 갱신 비용까지 효율적으로 절감하는 지혜가 필요합니다.</p>
+
+            <div class="keyword-tags" aria-label="연관 키워드 목록">
+                <span>트위지보험</span>
+                <span>트위지보험료</span>
+                <span>트위지 다이렉트</span>
+                <span>초소형 전기차 보험</span>
+                <span>트위지 보험 가격</span>
+                <span>트위지 평균 비용</span>
+                <span>트위지 보험 추천</span>
+                <span>트위지 자차 보험료</span>
+            </div>
+        </section>
+
+        <section id="비용분석">
+            <h2>트위지보험료 연령대별 평균 예상 금액 및 가격 결정 요인</h2>
+            <p>초소형 전기차인 트위지의 연간 보험 금액은 가입자의 연령대와 운전 경력 그리고 보험사 요율 산출 공식에 따라 편차가 크게 나타납니다. 일반적으로 만 20대 초반의 신규 가입 조건에서는 사고 위험률이 높게 책정되어 연간 예상 금액이 가장 높게 책정되는 반면 만 30대 이상이거나 만 40대 운전자의 경우에는 다이렉트 할인 특약을 적용받아 제일 경제적인 비용으로 설계할 수 있습니다.</p>
+            
+            <h3>연령별 가입 조건 및 평균 단가 비교</h3>
+            <p>만 21세 이하 또는 만 24세 이하의 사회 초년생이 트위지보험에 신규 가입할 경우 무사고 경력이 축적되지 않아 기본 단가가 비교적 높게 형성됩니다. 이 시기에는 부모님의 기존 가입 경력에 본인을 운전자 범위로 지정하는 방식을 이용해 경력을 합산하는 편이 좋습니다. 반면 만 30세 이상 한정 특약이나 부부 한정 특약을 지정하여 가입하면 설계 수수료가 제외되는 다이렉트 온라인 채널 기준 연간 평균 수십만 원 선까지 낮출 수 있습니다. 이는 일반 가솔린 승용차 대비 책임보험 구간의 비용이 비교적 저렴하기 때문입니다.</p>
+
+            <h3>초소형 전기차에 적용되는 차이점과 보험 종류</h3>
+            <p>트위지는 기아 레이나 현대 캐스퍼 같은 일반 경차와도 엄격한 차이점을 보입니다. 초소형 전기자동차 전용 요율이 적용되므로 가입 시 대인배상 I과 대물배상 한도를 충분히 확보하는 것이 권장됩니다. 대물배상은 최근 고가 수입 차량과의 충돌 위험을 대비해 최소 5억 원 이상으로 설정하는 추세이며 자차 즉 자기차량손해 특약의 경우 트위지의 독특한 플라스틱 외장재와 시저 도어 구조로 인해 파손 시 교체 비용이 발생하므로 이를 보장 종류에 포함할 것인지 신중한 판단이 요구됩니다.</p>
+            
+            <div class="input-group">
+                <h3>트위지보험료 간편 자가 진단 및 예상 견적 비교 요청</h3>
+                <p>운전자의 기본 인적 사항과 차량 종류를 선택하시면 주요 손해보험 브랜드의 실시간 예상 금액을 산출해 드립니다.</p>
+                <form action="#" method="post" onsubmit="alert('모의 분석이 접수되었습니다. 메일로 결과가 전송됩니다.'); return false;">
+                    <label for="twizy_model">차량 상세 구분</label>
+                    <select id="twizy_model" name="twizy_model" required>
+                        <option value="">차량 버전을 선택하세요</option>
+                        <option value="인텐스">트위지 인텐스 2인승</option>
+                        <option value="카고">트위지 카고 1인승 밴</option>
+                        <option value="기타">기타 초소형 전기차 모델</option>
+                    </select>
+
+                    <label for="driver_age">운전자 만나이 선택</label>
+                    <input type="number" id="driver_age" name="driver_age" placeholder="예시: 29" required min="18" max="90">
+                    
+                    <label for="driver_scope">운전자 범위 한정 설정</label>
+                    <select id="driver_scope" name="driver_scope" required>
+                        <option value="">범위를 지정해 주세요</option>
+                        <option value="본인">피보험자 본인 한정</option>
+                        <option value="부부">부부 공동 한정</option>
+                        <option value="가족">가족 전원 보장</option>
+                        <option value="누구나">지정 제한 없음 누구나</option>
+                    </select>
+
+                    <label for="user_email">결과 수신처 이메일</label>
+                    <input type="text" id="user_email" name="user_email" placeholder="example@domain.com" required>
+
+                    <button type="submit" class="form-submit">맞춤 예상 요금 시뮬레이션 시작</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="가입요령">
+            <h2>다이렉트 인터넷 가입 시 제공되는 할인 혜택과 사은품 활용 방안</h2>
+            <p>과거에는 오프라인 대리점 설계사를 통해 상담을 진행하는 비율이 높았으나 최근에는 인터넷 전용 온라인 사이트나 전용 모바일 앱 어플을 통한 가입이 주류를 이루고 있습니다. 다이렉트 채널의 핵심 장점은 유통 수수료가 제거되어 기본 요금이 오프라인 지점 대비 평균 15퍼센트에서 20퍼센트가량 더 저렴하다는 데 있습니다.</p>
+            
+            <h3>온라인 플랫폼 연동 혜택과 카드사 캐시백</h3>
+            <p>네이버페이, 카카오톡 간편 인증, 토스 등의 모바일 플랫폼과 연동할 경우 실시간 신규 가입 이벤트의 일환으로 모바일 주유 사은품, 백화점 상품권, 혹은 현금지원 혜택을 제공받을 수 있어 가입 단계에서부터 부가적인 지원금 효과를 볼 수 있습니다. 각 카드사별 청구할인 및 첫 결제 캐시백 이벤트 일정을 꼼꼼히 비교하면 결제 당일 비용 부담을 추가로 최소화하는 것이 가능합니다.</p>
+
+            <h3>주요 절약 요령 특약 리스트</h3>
+            <ul>
+                <li>마일리지 연동 환급 특약: 트위지는 주로 근거리 출퇴근용이나 배달 전문 용도로 쓰여 연간 주행거리가 짧은 경우가 많으므로 최대 35퍼센트 환급을 실현할 수 있습니다.</li>
+                <li>안전운전 점수 연동: 티맵 이나 카카오내비 앱의 안전운전 점수가 일정 기준을 초과하면 추가 감면 혜택을 부여합니다.</li>
+                <li>블랙박스 및 주행안전장치 탑재: 차량에 블랙박스가 기본 또는 추가로 장착된 경우 특약 할인이 상시 적용됩니다.</li>
+            </ul>
+        </section>
+
+        <section id="통계">
+            <h2>초소형 전기차 트위지보험 상품별 보장 구조 비교 분석표</h2>
+            <p>다음 표는 국내에서 유통되는 주요 초소형 전기차 전용 특약과 보장 종류별 특성을 정량적으로 분석하여 비교한 통계 자료입니다. 가입 전 반드시 본인의 운전 스타일과 예상 예산에 맞는 구성을 결정하시기 바랍니다.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>보장 및 특약 항목</th>
+                        <th>세부 적용 내용</th>
+                        <th>예상 할인율 및 장점</th>
+                        <th>비교 사이트 관련 검색 키워드</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>다이렉트 인터넷 가입</strong></td>
+                        <td>설계사를 배제한 온라인 직판 채널 전용 요율 적용</td>
+                        <td>기본료 대비 15%에서 20% 절감</td>
+                        <td>트위지보험 다이렉트 싼곳, 가장 저렴한곳</td>
+                    </tr>
+                    <tr>
+                        <td><strong>마일리지 특약 환급</strong></td>
+                        <td>연간 총 운행 주행거리가 3000km 이하일 경우 정산</td>
+                        <td>최대 30%에서 35% 소급 환급</td>
+                        <td>초소형 전기차 마일리지 할인, 주행거리 정산</td>
+                    </tr>
+                    <tr>
+                        <td><strong>자기차량손해 특화</strong></td>
+                        <td>트위지 플라스틱 패널 파손 시 외장 수리 보장 범위 설정</td>
+                        <td>자차 부담 한도 조정으로 단점 보완</td>
+                        <td>트위지 자차 가격, 단독사고 보상 범위</td>
+                    </tr>
+                    <tr>
+                        <td><strong>친환경 차량 우대</strong></td>
+                        <td>정부 무공해차 기준에 부합하는 전기 모빌리티 우대 적용</td>
+                        <td>추가 1%에서 3% 즉시 감면</td>
+                        <td>전기차 지원금 혜택, 친환경 자동차 요율</td>
+                    </tr>
+                    <tr>
+                        <td><strong>커뮤니티 검증 추천형</strong></td>
+                        <td>실제 유저들이 체감한 우수 보상 처리 브랜드 순위 적용</td>
+                        <td>사고 시 신속한 구난 및 대차 지원</td>
+                        <td>보배드림 트위지 후기, 디시 추천 보험사</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="커뮤니티">
+            <h2>인터넷 커뮤니티 실제 가입 후기 분석 트위지 장점과 단점</h2>
+            <p>소비자들이 가입 결정을 앞두고 가장 많이 검색해보는 채널은 실제 이용자들이 의견을 개진하는 디시인사이드, 보배드림, 에펨코리아(펨코) 등의 자동차 전문 포럼입니다. 이들 커뮤니티에 올라온 수많은 내돈내산 솔직한 후기들을 종합해 보면 트위지의 명확한 장단점을 파악할 수 있으며 이는 보험 설계 시 최적의 판단 기준이 됩니다.</p>
+            
+            <h3>커뮤니티 여론을 통해 본 보장 설계 팁</h3>
+            <p>보배드림 유저들의 후기에 의하면 트위지는 전폭이 매우 좁아 골목길이나 복잡한 도심지 주행과 좁은 구역 주차 편의성 면에서 제일 강력한 장점을 발휘합니다. 하지만 쇼크업소버가 딱딱하여 승차감이 다소 불편하고 에어컨과 히터가 구비되어 있지 않은 구형 모델의 경우 계절별 운행 편차가 매우 크다는 단점이 지적됩니다. 이러한 주행 빈도의 한계로 인해 연간 주행거리가 자연스레 극단적으로 줄어들게 되는데 이를 활용하여 마일리지 할인 특약을 극대화하면 1년 실질 납입 금액을 대폭 하향할 수 있다는 팁이 디시와 펨코 등에서 널리 추천되고 있습니다.</p>
+            <p>또한 사고 시 플라스틱 재질 특성상 찌그러지기보다는 깨지는 경향이 있어 수리 비용 즉 자차 부품 조달 가격이 의외로 높게 산정된다는 후기도 다수 존재합니다. 따라서 무사고 운전 이력이 길다면 자기차량손해 항목 가입 시 본인 부담금을 일정 수준 이상으로 높여 기본 가격을 대폭 낮추고 예기치 못한 대형 파손 시에만 보상을 받는 방식으로 가입하는 전략이 가장 경제적이고 영리한 대안으로 조명받고 있습니다.</p>
+        </section>
+
+        <section id="인공지능">
+            <h2>인공지능 플랫폼 제미나이와 챗지피티 활용한 보험 컨설팅 기법</h2>
+            <p>최근에는 핀테크 기술의 비약적인 발전으로 인공지능 즉 AI 검색 및 상담 기술이 적극 도입되고 있습니다. 오픈AI의 ChatGPT(챗지피티)나 구글의 Gemini(제미나이)와 같은 거대 언어 모델 기반의 에이전트를 적절히 활용하면 개별 보험사의 난해한 공시 자료를 일일이 대조하지 않고도 나에게 꼭 들어맞는 1대1 맞춤 컨설팅을 간편하게 받을 수 있습니다.</p>
+            <p>예를 들어 나의 현재 연령과 연간 주행거리 그리고 자차 포함 여부를 제미나이나 챗지피티에 직접 질의하면 각 보험사 공시 기준에 부합하는 가장 유리한 상품 순위와 예상 납입 금액을 체계적으로 도출해 줍니다. 아울러 카카오톡이나 토스 앱 어플에 연동된 자산관리 및 간편 견적 기능을 병행 활용하면 최저가 조회는 물론이며 즉각적인 온라인 가입 페이지로의 안내를 받아 번거로운 서류 제출 과정 없이 단 몇 분 만에 계약 체결을 마무리할 수 있습니다.</p>
+            
+            <div class="input-group-secondary">
+                <h3>소비자 주행 패턴 조사 및 가입 선호도 설문지</h3>
+                <p>본 설문에 답변해 주시면 축적된 통계 자료를 바탕으로 가장 적합한 할인 혜택 매칭 결과를 도출해 드립니다.</p>
+                <form action="#" method="post" onsubmit="alert('의견이 성공적으로 반영되었습니다. 감사합니다.'); return false;">
+                    <label>질문 1. 트위지 차량의 주된 운행 목적은 무엇입니까</label>
+                    <select name="usage_pattern" required>
+                        <option value="">운행 용도를 선택하세요</option>
+                        <option value="출퇴근">근거리 출퇴근 및 일상 통학용</option>
+                        <option value="배달">프랜차이즈 상가 가벼운 근거리 배달용</option>
+                        <option value="레저">주말 근교 드라이브 및 세컨드카 용도</option>
+                    </select>
+
+                    <label>질문 2. 가장 눈여겨보시는 가입 우선순위는 무엇입니까</label>
+                    <select name="priority" required>
+                        <option value="">우선사항을 선택하세요</option>
+                        <option value="최저가">사은품 필요 없이 무조건 가장 저렴한곳</option>
+                        <option value="보장">단독사고 발생 시 자차 보장이 신속한곳</option>
+                        <option value="브랜드">대기업 브랜드 위주의 원활한 현장 출동</option>
+                    </select>
+
+                    <label for="user_opinion">추가 요구사항 및 문의 (최대 300자)</label>
+                    <textarea id="user_opinion" name="user_opinion" rows="4" placeholder="예시: 만 26세 기준 연간 예상 금액과 모바일 상품권 지급 이벤트 진행 중인 업체를 추천받고 싶습니다." maxlength="300"></textarea>
+
+                    <button type="submit" class="form-submit">설문 응답 및 최적 특약 조합 확인</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="보장범위">
+            <h2>2026년도 기준 개정된 초소형 전기차 의무 보장 및 법적 근거</h2>
+            <p>2026년도에 접어들면서 국토교통부와 금융감독원 지침에 따른 초소형 전기 모빌리티의 보장 범위 및 손해율 가이드라인이 새롭게 정비되었습니다. 트위지보험을 정상적으로 운용하기 위해서는 가입자가 자동차손해배상 보장법에서 규정하는 의무 항목을 철저하게 준수하고 있는지 사전 점검해야 합니다.</p>
+            <p>대인배상 I과 대물배상 2천만 원은 법적으로 강제되는 최저 기준이지만 도로 위에서 발생하는 돌발상황은 예측 불가능하므로 대인배상 II를 무한으로 설정하고 대물배상 역시 최소 5억 원 이상으로 확장 가입하는 것이 필수입니다. 트위지는 경량 구조이므로 충돌 시 운전자 상해 가능성이 대형 세단에 비해 존재하기 때문에 자기신체사고 특약보다는 보장 한도가 넓고 치료비 전액을 정량 보상받기 유리한 자동차상해 특약을 지정하여 가입하는 것이 훨씬 현명하고 안전한 선택이 됩니다.</p>
+        </section>
+
+        <section id="신뢰사이트">
+            <h2>트위지 운전자가 반드시 참조해야 할 공인 신뢰 기관 정보 사이트</h2>
+            <p>최신 법적 동향과 정형화된 통계 그리고 정확한 국가지원 기준을 직접 검증하고 비교해 보실 수 있는 가장 신뢰성 높은 대표 외부 웹사이트들을 엄선하여 링크로 소개해 드립니다.</p>
+            <ul>
+                <li><a href="https://www.law.go.kr" target="_blank" class="external-link">국가법령정보센터 자동차손해배상 보장법 법률 확인</a></li>
+                <li><a href="https://www.fss.or.kr" target="_blank" class="external-link">금융감독원 소비자 권익 증진 및 손해보험 공시 조회</a></li>
+                <li><a href="https://namu.wiki/w/%EB%A5%B4%EB%85%B8%20%ED%8A%B8%EC%9C%84%EC%A7%80" target="_blank" class="external-link">나무위키 르노 트위지 차량 상세 제원 및 변천사</a></li>
+                <li><a href="https://www.moef.go.kr" target="_blank" class="external-link">기획재정부 친환경 개별소비세 감면 및 조세 특례 기준</a></li>
+                <li><a href="https://www.kidi.or.kr" target="_blank" class="external-link">보험개발원 모델별 사고 손해율 및 등급 기준 분석 데이터</a></li>
+                <li><a href="https://www.ev.or.kr" target="_blank" class="external-link">환경부 무공해차 통합누리집 전기차 구매 보조금 지원 정보</a></li>
+            </ul>
+        </section>
+
+        <section id="연락처">
+            <h2>실시간 트위지보험 전문 일대일 견적 무료 상담 및 무료 가이드 안내</h2>
+            <p>다양한 특약과 혜택 조건 속에서 나에게 가장 유리한 맞춤 요율을 찾는 것은 결코 쉬운 과정이 아닙니다. 복잡하고 까다로운 약관 비교를 일거에 해결하고 2026년 기준 가장 저렴하면서도 풍성한 사은품과 캐시백 이벤트를 지원하는 제휴 채널을 일대일로 연결해 드립니다. 주저하지 마시고 전문 상담가의 컨설팅을 통해 소중한 자산을 지키시기 바랍니다.</p>
+            
+            <a href="tel:01012345678" class="cta-button" aria-label="전문가 실시간 견적 유선 안내 통화 연결">실시간 전화 견적 상담 연결 전화번호 010-1234-5678</a>
+            
+            <p style="text-align: center; margin-top: 1.5rem; color: #64748b; font-size: 0.95rem;">상담 운영 시간: 평일 오전 9시부터 오후 6시까지 제공하며 모바일 문의는 연중무휴 24시간 언제나 가능합니다.</p>
+        </section>
     </main>
-  </body>
-</html>
+
+  
